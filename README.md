@@ -3,6 +3,11 @@ deploy https://mi8mto.github.io/React-Calculator-task/
 # React + Vite
 
 init
+(по списку GitHub )
+git init
+git add .
+git remote add origin "НАШ РЕПОЗИТОРИЙ"
+git push -u origin "НАША ВЕТКА"
 
 1. npm install gh-pages --save-dev
 2. в package.json в scripts после "dev" add
