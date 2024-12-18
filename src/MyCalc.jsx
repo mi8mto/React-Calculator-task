@@ -21,14 +21,16 @@ export const MyCalc = () => {
 		'7',
 		'8',
 		'9',
-		'=',
+		'*',
+		'/',
 		'0',
 		'C',
+		'=',
 	];
 
 	// Обработчик кликов
 	const handleClick = (btn) => {
-		if (['+', '-'].includes(btn)) {
+		if (['+', '-', '*', '/'].includes(btn)) {
 			if (operand1 && !operator) {
 				setOperator(btn);
 				setIsResult(false); // Возврат цвета дисплея к исходному
@@ -42,7 +44,24 @@ export const MyCalc = () => {
 			if (operand1 && operator && operand2) {
 				const num1 = parseInt(operand1, 10);
 				const num2 = parseInt(operand2, 10);
-				const result = operator === '+' ? num1 + num2 : num1 - num2;
+				let result;
+				switch (operator) {
+					case '+':
+						result = num1 + num2;
+						break;
+					case '-':
+						result = num1 - num2;
+						break;
+					case '*':
+						result = num1 * num2;
+						break;
+					case '/':
+						result = num2 !== 0 ? Math.floor(num1 / num2) : 'Error'; // Проверка деления на 0
+						break;
+					default:
+						result = '';
+				}
+
 				setOperand1(result.toString());
 				setOperator('');
 				setOperand2('');
